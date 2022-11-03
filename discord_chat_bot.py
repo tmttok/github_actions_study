@@ -24,12 +24,8 @@ def get_channel_dict(channel_json='channels.json'):
 
 # 获取最近聊天记录
 def get_last_records(channel_name, channel_id, total=100):
-    url = f"https://discord.com/api/v9/channels/{channel_id}/messages"
-    payload = {
-        'limit': total,
-    }
     try:
-        res = requests.get(url=url, params=payload, headers=headers)
+        res = requests.get(f"https://discord.com/api/v9/channels/{channel_id}/messages?limit={total}", headers=headers)
         if res.status_code == 200:
             return json.loads(res.content)
         else:
@@ -54,8 +50,9 @@ def qingyunke_api(content):
     return None
 
 
-# 获得回答内容
+# 获取回答内容
 def get_content(channel_name, channel_id, type=1):
+    # 获取最近聊天记录
     total = 100
     result = get_last_records(channel_name, channel_id, total)
     if result is None:
@@ -68,7 +65,7 @@ def get_content(channel_name, channel_id, type=1):
             print(f'{channel_name}最近{check_num}条发过')
             return None
 
-    # 从最近记录选一条
+    # 从最近记录选一条记录
     content = result[random.randrange(check_num)]['content']
     while '<' in content or '@' in content or 'http' in content or '?' in content or '？' in content:
         content = result[random.randrange(check_num)]['content']
@@ -76,7 +73,7 @@ def get_content(channel_name, channel_id, type=1):
     if type == 1:
         # 从剩余记录选一条作为回答
         answer = result[check_num + random.randrange(total-check_num)]['content']
-        while '<' in content or '@' in content or 'http' in content or '?' in content or '？' in content:
+        while '<' in answer or '@' in answer or 'http' in answer or '?' in answer or '？' in answer:
             answer = result[check_num + random.randrange(total-check_num)]['content']
     else:
         # 调用聊天api回答
