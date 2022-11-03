@@ -1,7 +1,7 @@
 name: 3. discord chat bot
 on:
   schedule:
-    - cron:  '0/10 * * * *'
+    - cron:  '*/10 * * * *'
 
 jobs:
   chat:
@@ -21,3 +21,4 @@ jobs:
         run: python3 discord_chat_bot.py
         env:
           AUTH: ${{ secrets.AUTH }}
+          NAME: ${{ secrets.NAME }}
