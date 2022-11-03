@@ -1,7 +1,8 @@
 name: 3. discord chat bot action
+
 on:
   schedule:
-    - cron:  '* * * * *'
+    - cron:  '*/5 * * * *'
 
   workflow_dispatch:
 
