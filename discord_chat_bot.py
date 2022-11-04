@@ -59,7 +59,7 @@ def get_content(channel_name, channel_id, type=1):
         return None
 
     # 最近发过就不用发了
-    check_num = 20
+    check_num = 30
     for i in range(check_num):
         if name in result[i]['author']['username']:
             print(f'{channel_name}最近{check_num}条发过')
@@ -67,19 +67,23 @@ def get_content(channel_name, channel_id, type=1):
 
     # 从最近记录选一条记录
     content = result[random.randrange(check_num)]['content']
-    while '<' in content or '@' in content or 'http' in content or '?' in content or '？' in content:
+    while check_content(content):
         content = result[random.randrange(check_num)]['content']
 
     if type == 1:
         # 从剩余记录选一条作为回答
-        answer = result[check_num + random.randrange(total-check_num)]['content']
-        while '<' in answer or '@' in answer or 'http' in answer or '?' in answer or '？' in answer:
-            answer = result[check_num + random.randrange(total-check_num)]['content']
+        answer = result[total-check_num + random.randrange(check_num)]['content']
+        while check_content(answer):
+            answer = result[total-check_num + random.randrange(check_num)]['content']
     else:
         # 调用聊天api回答
         answer = qingyunke_api(content)
 
-    return [content, answer]
+    return (content, answer)
+
+
+def check_content(content):
+    return '<' in content or '>' in content or '@' in content or '#' in content or 'http' in content or '?' in content or len(content)>100
 
 
 # 自动聊天
