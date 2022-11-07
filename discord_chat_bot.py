@@ -1,4 +1,5 @@
 import json5
+import json
 import os
 import time
 import requests
@@ -27,7 +28,7 @@ def get_last_records(channel_name, channel_id, total=100):
     try:
         res = requests.get(f"https://discord.com/api/v9/channels/{channel_id}/messages?limit={total}", headers=headers, timeout=30)
         if res.status_code == 200:
-            return json5.loads(res.content)
+            return json.loads(res.content)
         else:
             print(f'❌ {channel_name}获取最近{total}条聊天记录失败：{res.status_code}')
     except Exception as e:
@@ -44,7 +45,7 @@ def qingyunke_api(content):
     try:
         res = requests.get(f'http://api.qingyunke.com/api.php?key=free&appid=0&msg={quote(content)}', headers=headers, timeout=30)
         if res.status_code == 200:
-            return json5.loads(res.content)['content']
+            return json.loads(res.content)['content']
     except Exception as e:
         pass
     return None
@@ -98,7 +99,7 @@ def auto_chat(channel_name, channel_id):
         "tts": False
     }
     try:
-        res = requests.post(f'https://discord.com/api/v9/channels/{channel_id}/messages', data=json5.dumps(payload, quote_keys=True),  headers=headers, timeout=30)
+        res = requests.post(f'https://discord.com/api/v9/channels/{channel_id}/messages', data=json.dumps(payload),  headers=headers, timeout=30)
         if res.status_code==200:
             print(f'✅ {channel_name}发送成功 => {content[0]}: {content[1]}')
         else:
