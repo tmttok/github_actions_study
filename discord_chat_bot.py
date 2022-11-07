@@ -98,7 +98,7 @@ def auto_chat(channel_name, channel_id):
         "tts": False
     }
     try:
-        res = requests.post(f'https://discord.com/api/v9/channels/{channel_id}/messages', data=json5.dumps(payload),  headers=headers, timeout=30)
+        res = requests.post(f'https://discord.com/api/v9/channels/{channel_id}/messages', json=payload,  headers=headers, timeout=30)
         if res.status_code==200:
             print(f'✅ {channel_name}发送成功 => {content[0]}: {content[1]}')
         else:
