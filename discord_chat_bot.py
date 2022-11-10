@@ -84,7 +84,7 @@ def get_content(channel_name, channel_id, type=1):
 
 
 def check_content(content):
-    return '<' in content or '>' in content or '@' in content or '#' in content or 'http' in content or '?' in content or len(content)>100
+    return '<' in content or '>' in content or '@' in content or '#' in content or 'http' in content or '?' in content or len(content)>50
 
 
 # 自动聊天
