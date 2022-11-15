@@ -60,7 +60,7 @@ def get_content(channel_name, channel_id, type=1):
         return None
 
     # 最近发过就不用发了
-    check_num = 50
+    check_num = 60
     for i in range(check_num):
         if name in result[i]['author']['username']:
             print(f'{channel_name}最近{check_num}条发过')

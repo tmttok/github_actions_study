@@ -14,9 +14,13 @@
     // aptos dapp
     // "Jujube Finance": "1028531223045341216",//kicked
     "Mojito Markets": "1006509967441928204",
+    "Martian Aptos Wallet": "1008549811303223328",
     "Meeiro": "1006201968622063718",
     "ABEL Finance": "1019138393915002891",
     "AptosLaunch": "1018400479425855588",
+    "Thala": "1031263834029162566",
+    "SynthMeta": "1032941367812444240",
+    "Notifi": "939658182509334542",
     // aptos token
     // "Apso Coin": "1005138074394701825",//banned
     // aptos nft
@@ -49,10 +53,12 @@
     "G.O.A.T SQUAD NFT": "1000328069405483059",
     "Enchanter Finance": "1007195736171085834",
     "Aptos Bangers": "899401866482429953",
+    "Aptos Kids": "1029429100261150780",
+    "Shi-Ko-Ku 四国区": "1032957423750754384",
 
     //sui dapp
     "Sui Global": "1018121473044529163",
-    "Araya Finance": "1027799740630450194",
+    "Araya Finance": "1027799740630450194",//banned
     //sui nft
     "Baby Apes Society": "1032355301300637746",
     "SuiBulls": "970610516298977311",
@@ -66,6 +72,9 @@
     "The Brawlers": "937634593799037018",
     "Sui Monks": "933068585356636253",
     "Mynft": "1027050542985396394",
+    "Suizzle NFT": "1039151499391012936",
+    "QTube Dao": "1031294030019035267",
+    "Thirsty Monkeys": "1027261305595375709",
     "Clutchy": "1014523246814695506"
 
 }
